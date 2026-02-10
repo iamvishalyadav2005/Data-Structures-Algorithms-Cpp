@@ -47,5 +47,4 @@ implemented in C++ for placement and interview preparation.
 - Mathematical Algorithms
 
 ## Goal
-To build strong problem-solving skills and prepare for
-product-based company interviews.
+To build strong problem-solving skills.
