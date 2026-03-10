@@ -1,34 +1,30 @@
 class Solution {
 public:
 
-    double calculate(vector<int>& dist, int speed){
+    int calculateHours(vector<int>& piles, int k){
+        int hours = 0;
 
-        double total = 0;
-
-        for(int i = 0; i < dist.size() - 1; i++){
-            total += (dist[i] + speed - 1) / speed;
+        for(int pile : piles){
+            hours += (pile + k - 1) / k;
         }
 
-        total += (double)dist.back() / speed;
-
-        return total;
+        return hours;
     }
 
-    int minSpeedOnTime(vector<int>& dist, double hour) {
-
-        if(dist.size() - 1 >= hour) return -1;
+    int minEatingSpeed(vector<int>& piles, int h) {
 
         int low = 1;
-        int high = 1e7;
-        int ans = -1;
+        int high = *max_element(piles.begin(), piles.end());
+
+        int ans = high;
 
         while(low <= high){
 
-            int mid = low + (high - low) / 2;
+            int mid = (low + high) / 2;
 
-            double time = calculate(dist, mid);
+            int hours = calculateHours(piles, mid);
 
-            if(time <= hour){
+            if(hours <= h){
                 ans = mid;
                 high = mid - 1;
             }
